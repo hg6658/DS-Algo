@@ -2,3 +2,4 @@ git init
 git status 
 git add file ----> brings them to Stage
 git commit -m 'message'
+git log ----> get log of all the commits 
