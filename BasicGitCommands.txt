@@ -3,3 +3,10 @@ git status
 git add file ----> brings them to Stage
 git commit -m 'message'
 git log ----> get log of all the commits 
+git reset ----> paste the commit ID all the git commits after it will be removed 
+git stash 
+git stash pop ----> pop every file from stash
+git stash clear --------> remove file from stash
+git branch feature -------> Add a new Branch Feature 
+git checkout feature ------> head wiil point to feature branch 
+
