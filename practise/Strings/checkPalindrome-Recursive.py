@@ -9,5 +9,5 @@ def checkPalindrome(str,i,j):
 
 
 if __name__ == '__main__':
-    str = "malxclam"
+    str = "malayalam"
     print(checkPalindrome(str,0,len(str)-1))
