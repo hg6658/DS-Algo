@@ -4,10 +4,11 @@ if __name__=='__main__':
     e=len(arr)-1
     mid = -1;
     key = 6
-    
-    while(s<e):
+    flag=0;
+    while(s<=e):
         mid = (s+e)//2;
         if(arr[mid]==key):
+            flag=1
             print("Element Found");
             break;
         elif(arr[mid]>key):
@@ -15,6 +16,6 @@ if __name__=='__main__':
         else:
             s=mid+1;
 
-    if(arr[mid]!=key):
-        print("Element Not Found")        
+    if(flag==0):
+       print("Element Not Found")        
 
