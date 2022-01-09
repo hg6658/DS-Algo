@@ -9,7 +9,7 @@ def bubbleSort(arr,size):
             arr[i]=arr[i+1];
             arr[i+1]=t;
     
-    bubbleSort(nums,size-1);
+    bubbleSort(arr,size-1);
 
 if __name__=='__main__':
     nums = [64, 34, 25, 12, 22, 11, 90]

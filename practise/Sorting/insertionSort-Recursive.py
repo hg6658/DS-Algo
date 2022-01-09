@@ -16,7 +16,7 @@ def insertionSort(nums,size):
 
 
 if __name__=='__main__':
-    nums = [64, 34, 25, 12, 22, 11, 90]
+    nums = [6,2,8,4,10]
     insertionSort(nums,0)
 
     for num in nums:
