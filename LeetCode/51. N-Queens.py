@@ -93,7 +93,7 @@ class Solution(object):
 
 if __name__ == '__main__':
     ob = Solution();
-    print(ob.number_of_Ways(8)); 
+    print(ob.number_of_Ways(4)); 
 '''
     matrix =[[0,0,1,0],[1,0,0,0],[0,0,0,0],[0,1,0,0]] 
 
