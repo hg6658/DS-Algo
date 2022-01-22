@@ -1,14 +1,21 @@
 class Solution(object):
-    def numDecodingsHelper(self,s,i):
+    def numDecodingsHelper(self,s,i,dp):
         if(i>len(s)):
             return 0;
         if(i==len(s)):
-            return 1;    
+            return 0;    
 
-        if(s[i]==0):
+        if(s[i]=='0'):
             return 0;
+        if(dp[i]!=-1):
+            return dp[i];
+        dp[i]=0;
+        dp[i]+=self.numDecodingsHelper(s,i+1,dp);
 
-        return self.numDecodingsHelper(s,i+1)+self.numDecodingsHelper(s,i+2)    
+        if(i<len(s)-1 and (s[i]=='1' or (s[i]=='2' and s[i+1]<'7'))):
+             dp[i]+=self.numDecodingsHelper(s,i+2,dp);
+
+        return 1+dp[i];   
 
 
 
@@ -17,8 +24,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        print(self.numDecodingsHelper(s,0))
+        dp=[-1]*len(s)
+        return self.numDecodingsHelper(s,0,dp)
 
-if __name__ =='__main__':
-    ob = Solution();
-    ob.numDecodings("11106")        
+

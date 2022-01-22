@@ -11,7 +11,7 @@ class Solution(object):
         :rtype: int
         """
         '''
-        First created a dictionary with chracter frequency... Created a set to tore unique frequency. If frequency is not unique 
+        First created a dictionary with chracter frequency... Created a set to store unique frequency. If frequency is not unique 
         then decrease the frquecny till its unique and increase the deletions.
         '''
 
