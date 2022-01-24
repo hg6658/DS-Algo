@@ -1,32 +1,31 @@
-
 class Solution:
     def solver(self,n,A,x,k,i,dp):
         if(i>=n):
             return i;
         if(k==0 and x<=0):
             return i;
-
-        if(dp[x][k]!=-1):
-            return dp[x][k];
+        
+        if(dp[i][x][k]!=-1):
+            return dp[i][x][k];
 
         if(k==0 and x>0):
-            dp[x][k]=self.solver(n,A,x-A[i],k,i+1,dp)
-            return dp[x][k]
+            dp[i][x][k]=self.solver(n,A,x-A[i],k,i+1,dp)
+            return dp[i][x][k]
 
         if(k>0 and x<=0):
             k-=1
             ans=self.solver(n,A,x,k,i+1,dp)
             k+=1;
-            dp[x][k]=ans
-            return dp[x][k];
+            dp[i][x][k]=ans
+            return dp[i][x][k];
 
         k-=1;
         op2 = self.solver(n,A,x,k,i+1,dp)
         k+=1 
         op1 =  self.solver(n,A,x-A[i],k,i+1,dp);
         
-        dp[x][k]=max(op1,op2)
-        return dp[x][k]  
+        dp[i][x][k]=max(op1,op2)
+        return dp[i][x][k]  
 
 
 
@@ -38,22 +37,27 @@ class Solution:
     def solve(self,n,A,x,k):
         #code here
         dp=[];
-        for i in range(x+1):
-            q=[];
-            for j in range(k+1):
-                q.append(-1);
-            dp.append(q);    
-
-        l=[0]*len(A)
-        A[0]=A[0];
+        for l in range(n):
+            p=[]
+            for i in range(x+1):
+                q=[];
+                for j in range(k+1):
+                    q.append(-1);
+                p.append(q);
+            dp.append(p)        
+        l=[0]*(len(A)-1)
         for i in range(1,n):
-            l[i]=A[i]-A[i-1]
+            l[i-1]=A[i]-A[i-1]
 
-        ans = self.solver(n,l[1:],x,k,1,dp)
+        ans = self.solver(len(l),l,x,k,0,dp)
 
+        return ans
+
+
+if __name__=="__main__":
+    for _ in range(int(input())):
+        n,x,k=map(int,input().strip().split())
+        A=[int(i) for i in input().strip().split()]
+        obj=Solution()
+        ans=obj.solve(n,A,x,k)
         print(ans)
-
-if __name__ =='__main__':
-    ob=Solution()
-    ob.solve(len([0, 6, 10, 16, 23, 26, 36, 38, 41, 49, 50, 60, 64, 71, 72, 79, 82, 89, 91, 100, 108, 118, 121, 122, 125, 129, 137, 143, 153, 156, 159, 168, 178, 186, 190, 197, 199, 202, 212, 216, 218, 228, 233, 241, 250, 255, 261, 262, 266, 273, 275, 276, 283, 287, 290, 291, 298, 300, 306, 312, 317, 325, 332, 338, 345, 355, 359, 367, 372, 378, 381, 387, 392, 400, 405, 410, 414, 415, 423, 432, 439, 448, 457, 462]),[0, 6, 10, 16, 23, 26, 36, 38, 41, 49, 50, 60, 64, 71, 72, 79, 82, 89, 91, 100, 108, 118, 121, 122, 125, 129, 137, 143, 153, 156, 159, 168, 178, 186, 190, 197, 199, 202, 212, 216, 218, 228, 233, 241, 250, 255, 261, 262, 266, 273, 275, 276, 283, 287, 290, 291, 298, 300, 306, 312, 317, 325, 332, 338, 345, 355, 359, 367, 372, 378, 381, 387, 392, 400, 405, 410, 414, 415, 423, 432, 439, 448, 457, 462],87,10)        
-    #ob.solve(4,[0,1,2,3],2,2)
