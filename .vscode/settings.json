@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "Geeks For Geeks",
+        ""
+    ],
+    "files.associations": {
+        "iostream": "cpp"
+    }
+}
